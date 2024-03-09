@@ -1,8 +1,8 @@
 #frontpage_background {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #main_menu {
@@ -25,26 +25,74 @@
 	font-size: 2vw;
 }
 
-.budget-marker {
-	position: absolute;
-	left: 55%;
-	top: 20%;
-	transform: translate(-50%, -50%);
-	font-family: monospace;
-	font-size: 3vw;
-	font-weight: bold;
-	white-space: pre-wrap;
-	text-align: center;
+.rotate-center {
+	-webkit-animation: rotate-center 0.6s ease-in-out both;
+	        animation: rotate-center 0.6s ease-in-out both;
 }
 
-.activity-marker {
-	background-color: white;
-	opacity: 50%;
-	border-radius: 20%;
-	padding: 5vw 20vw 10vw 20vw;
-	white-space: pre-wrap;
-	position: absolute;
-	left: 55%;
-	top: 20%;
-	transform: translate(-50%, -50%);
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+#wrapper-div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#budget-marker-background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10%;
+  background-color: white;
+  opacity: 80%;
+  font-family: monospace;
+  height: 30vh;
+  width: 30vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#budget-marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 5vh
+}
+
+#placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: monospace;
+  font-weight: bold;
+  background-color: white;
+  opacity: 50%;
+  border-radius: 10%;
+  padding: 10px;
 }
