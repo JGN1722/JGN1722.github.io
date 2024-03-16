@@ -24,7 +24,13 @@ body {
 	align-items: center;
 	height: 100vh;
 	background-image: var(--body-bg);
-	font-family: Helvetica, sans-serif;
+	font-family: monospace;
+	font-size: 16px;
+}
+@media screen and (min-width: 600px) {
+	body {
+		font-size: calc(16px + 0.5vw); /* adjust the value as needed */
+	}
 }
 
 .msger {
