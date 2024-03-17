@@ -25,13 +25,14 @@ body {
 	height: 100vh;
 	background-image: var(--body-bg);
 	font-family: monospace;
-	font-size: 16px;
+	font-size: max(16px,2vh);
 }
-@media screen and (min-width: 1000px) {
+
+/*@media screen and (min-width: 1000px) {
 	body {
-		font-size: calc(16px + 0.2vw); /* adjust the value as needed */
+		font-size: calc(16px + 0.2vw);
 	}
-}
+}*/
 
 .msger {
 	display: flex;
