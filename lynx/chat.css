@@ -141,6 +141,8 @@ body {
 .msger-input {
 	flex: 1;
 	background: #ddd;
+	min-height: 35px;
+	height: 7vh;
 }
 .msger-send-btn {
 	margin-left: 10px;
@@ -149,6 +151,8 @@ body {
 	font-weight: bold;
 	cursor: pointer;
 	transition: background 0.23s;
+	min-height: 35px;
+	height: 7vh;
 }
 .msger-send-btn:hover {
 	background: rgb(0, 180, 50);
