@@ -62,14 +62,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</body>
 	<script>
 		window.onload = function() {
+			resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
-			if (getInnerHeight(inpt) > 100) {
+			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
 			} else {
 				inpt.placeholder = "Enter your message..."
 			}
 			var btn = document.getElementById("msger-send-btn")
-			if (getInnerHeight(btn) > 100) {
+			if (getInnerHeight(btn) > 50) {
 				btn.innerHTML = ""
 			} else {
 				btn.innerHTML = "Send"
@@ -77,20 +78,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		};
 		
 		window.onresize = function() {
+			resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
-			if (getInnerHeight(inpt) > 100) {
+			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
 			} else {
 				inpt.placeholder = "Enter your message..."
 			}
 			var btn = document.getElementById("msger-send-btn")
-			if (getInnerHeight(btn) > 100) {
+			if (getInnerHeight(btn) > 50) {
 				btn.innerHTML = ""
 			} else {
 				btn.innerHTML = "Send"
 			}
 		};
 		
+		function resizeFont(idName) {
+			elm = document.getElementById(idName)
+			//get element height
+			var height = getInnerHeight(elm)
+			//set font height
+			elm.style.fontSize = height + "px"
+		}
 		function getInnerHeight(elm) {
 			var computed = getComputedStyle(elm)
 			var padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom)
