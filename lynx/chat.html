@@ -64,6 +64,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		window.onload = function() {
 			resizeFont("msger-input");
 			resizeFont("msger-send-btn");
+			var btn = document.getElementById("msger-send-btn")
+			if (getInnerHeight(btn) > 100) {
+				btn.innerHTML = ""
+			} else {
+				btn.innerHTML = "Send"
+			}
 		};
 		
 		window.onresize = function() {
