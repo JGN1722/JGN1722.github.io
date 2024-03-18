@@ -55,14 +55,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			</main>
 
 			<form class="msger-inputarea">
-				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." />
+				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." onfocus="inputFocus()" onblur="inputBlur()" />
 				<button type="submit" class="msger-send-btn" id="msger-send-btn">Send</button>
 			</form>
 		</section>
 	</body>
 	<script>
 		window.onload = function() {
-			resizeFont("msger-input");
+			//resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
 			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
@@ -78,7 +78,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		};
 		
 		window.onresize = function() {
-			resizeFont("msger-input");
+			//resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
 			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
@@ -104,6 +104,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			var computed = getComputedStyle(elm)
 			var padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom)
 			return elm.clientHeight - padding
+		}
+		
+		function inputFocus() {
+			document.getElementById("msger-input").placeholder = "focused"
+			resizeFont("msger-input")
+		}
+		function inputBlur() {
+			document.getElementById("msger-input").placeholder = "blured"
+			document.getElementById("msger-input").style.fontSize = ""
 		}
 	</script>
 </html>
