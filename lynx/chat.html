@@ -62,7 +62,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</body>
 	<script>
 		window.onload = function() {
-			//resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
 			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
@@ -78,7 +77,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		};
 		
 		window.onresize = function() {
-			//resizeFont("msger-input");
 			var inpt = document.getElementById("msger-input")
 			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
@@ -93,13 +91,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			}
 		};
 		
-		function resizeFont(idName) {
-			elm = document.getElementById(idName)
-			//get element height
-			var height = getInnerHeight(elm)
-			//set font height
-			elm.style.fontSize = height + "px"
-		}
 		function getInnerHeight(elm) {
 			var computed = getComputedStyle(elm)
 			var padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom)
@@ -107,11 +98,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		}
 		
 		function inputFocus() {
-			document.getElementById("msger-input").placeholder = "focused"
-			resizeFont("msger-input")
+			var inpt = document.getElementById("msger-input")
+			var rect = inpt.getBoundingClientRect()
+			var height = getInnerHeight(inpt)
+			inpt.style.fontSize = height + "px"
+			inpt.style.left = rect.left + "px"
+			inpt.style.top = rect.top + "px"
+			inpt.style.width = rect.width + "px"
+			inpt.style.height = rect.height + "px"
 		}
 		function inputBlur() {
-			document.getElementById("msger-input").placeholder = "blured"
 			document.getElementById("msger-input").style.fontSize = ""
 		}
 	</script>
