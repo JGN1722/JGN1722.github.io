@@ -28,12 +28,6 @@ body {
 	font-size: max(16px,2vh);
 }
 
-/*@media screen and (min-width: 1000px) {
-	body {
-		font-size: calc(16px + 0.2vw);
-	}
-}*/
-
 .msger {
 	display: flex;
 	flex-flow: column wrap;

@@ -1,3 +1,4 @@
+
 <!--
 Copyright (c) 2024 by Sajad Hashemian (https://codepen.io/sajadhsm/pen/odaBdd)
 
@@ -54,9 +55,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			</main>
 
 			<form class="msger-inputarea">
-				<input type="text" class="msger-input" placeholder="Enter your message..." />
+				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." />
 				<button type="submit" class="msger-send-btn">Send</button>
 			</form>
 		</section>
 	</body>
+	<script>
+		window.onload = function() {
+			resizeFont("msger-input");
+			resizeFont("msger-send-btn");
+		};
+		
+		window.onresize = function() {
+			resizeFont("msger-input");
+			resizeFont("msger-send-btn");
+		};
+		
+		function resizeFont(idName) {
+			elm = document.getElementById(idName)
+			//get element height
+			var height = getInnerHeight(elm)
+			alert(height)
+			//set font height
+			elm.style.fontSize = height + "px"
+		}
+		function getInnerHeight(elm) {
+			var computed = getComputedStyle(elm)
+			var padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom)
+			return elm.clientHeight - padding
+		}
+	</script>
 </html>
