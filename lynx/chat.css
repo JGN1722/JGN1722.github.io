@@ -137,7 +137,6 @@ body {
 	background: #ddd;
 	min-height: 35px;
 	height: 7vh;
-	font-size: 100%;
 }
 .msger-send-btn {
 	margin-left: 10px;
@@ -151,7 +150,6 @@ body {
 	height: 7vh;
 	min-width: 55px;
 	width: 10vh;
-	font-size: 100%;
 }
 .msger-send-btn:hover {
 	background: rgb(0, 180, 50);
