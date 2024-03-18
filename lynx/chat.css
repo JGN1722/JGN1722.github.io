@@ -1,5 +1,5 @@
 :root {
-	--body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	--body-bg: linear-gradient(135deg, #000000 20%, yellow 80%);
 	--msger-bg: #fff;
 	--border: 2px solid #ddd;
 	--left-msg-bg: #ececec;
