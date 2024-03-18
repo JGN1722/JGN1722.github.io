@@ -56,7 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 			<form class="msger-inputarea">
 				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." />
-				<button type="submit" class="msger-send-btn">Send</button>
+				<button type="submit" class="msger-send-btn" id="msger-send-btn">Send</button>
 			</form>
 		</section>
 	</body>
@@ -75,6 +75,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			elm = document.getElementById(idName)
 			//get element height
 			var height = getInnerHeight(elm)
+			alert(height)
 			//set font height
 			elm.style.fontSize = height + "px"
 		}
