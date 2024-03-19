@@ -137,6 +137,9 @@ body {
 	background: #ddd;
 	min-height: 35px;
 	height: 7vh;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .msger-send-btn {
 	margin-left: 10px;
