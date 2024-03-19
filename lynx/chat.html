@@ -67,32 +67,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		function resizePage() {
 			var inpt = document.getElementById("msger-input")
 			var btn = document.getElementById("msger-send-btn")
-			var height = getInnerHeight(inpt)
+			var fontHeight = getInnerHeight(inpt)
 			
-			if (height > 50) {
+			if (fontHeight > 50) {
 				with (inpt) {
 					placeholder = ""
 					style.fontSize = ""
 					var rect = getBoundingClientRect()
 					placeholder = "..."
-					style.fontSize = height + "px"
+					style.fontSize = fontHeight + "px"
 					style.left = rect.left + "px"
 					style.top = rect.top + "px"
 					style.width = rect.width + "px"
 					style.height = rect.height + "px"
-				}
+			}
 				
-				with (btn) {
-					innerHTML = ""
-					style.fontSize = ""
-					rect = getBoundingClientRect()
-					innerHTML = "Send"
-					style.fontSize = height + "px"
-					style.left = rect.left + "px"
-					style.top = rect.top + "px"
-					style.width = rect.width + "px"
-					style.height = rect.height + "px"
-				}
+				btn.innerHTML = ""
 			} else {
 				inpt.placeholder = "Enter your message..."
 				btn.innerHTML = "Send"
