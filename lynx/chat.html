@@ -55,7 +55,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			</main>
 
 			<form class="msger-inputarea">
-				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." onfocus="inputFocus()" onblur="inputBlur()" />
+				<input type="text" class="msger-input" id="msger-input" placeholder="Enter your message..." />
 				<button type="submit" class="msger-send-btn" id="msger-send-btn">Send</button>
 			</form>
 		</section>
@@ -68,23 +68,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				inpt.placeholder = ""
 				btn.innerHTML = ""
 				
-				var inptRect = inpt.getBoundingClientRect()
-				var rect = inpt.getBoundingClientRect()
-				var height = getInnerHeight(inpt)
-				inpt.placeholder = "Enter your message..."
-				inpt.style.fontSize = height + "px"
-				inpt.style.left = rect.left + "px"
-				inpt.style.top = rect.top + "px"
-				inpt.style.width = rect.width + "px"
-				inpt.style.height = rect.height + "px"
+				with (inpt) {
+					.style.fontSize = ""
+					var inptRect = .getBoundingClientRect()
+					var rect = .getBoundingClientRect()
+					var height = getInnerHeight(inpt)
+					.style.fontSize = height + "px"
+					.placeholder = "Enter your message..."
+					.style.fontSize = height + "px"
+					.style.left = rect.left + "px"
+					.style.top = rect.top + "px"
+					.style.width = rect.width + "px"
+					.style.height = rect.height + "px"
+				}
 				
-				var btnRect = btn.getBoundingClientRect()
-				btn.placeholder = "Send"
-				btn.style.fontSize = height + "px"
-				btn.style.left = rect.left + "px"
-				btn.style.top = rect.top + "px"
-				btn.style.width = rect.width + "px"
-				btn.style.height = rect.height + "px"
+				width (btn) {
+					var btnRect = .getBoundingClientRect()
+					.placeholder = "Send"
+					.style.fontSize = height + "px"
+					.style.left = rect.left + "px"
+					.style.top = rect.top + "px"
+					.style.width = rect.width + "px"
+					.style.height = rect.height + "px"
+				}
 			} else {
 				var rect = inpt.getBoundingClientRect()
 				var height = getInnerHeight(inpt)
@@ -100,23 +106,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				inpt.placeholder = ""
 				btn.innerHTML = ""
 				
-				var inptRect = inpt.getBoundingClientRect()
-				inpt.placeholder = "Enter your message..."
-				var rect = inpt.getBoundingClientRect()
-				var height = getInnerHeight(inpt)
-				inpt.style.fontSize = height + "px"
-				inpt.style.left = rect.left + "px"
-				inpt.style.top = rect.top + "px"
-				inpt.style.width = rect.width + "px"
-				inpt.style.height = rect.height + "px"
+				with (inpt) {
+					.style.fontSize = ""
+					var inptRect = .getBoundingClientRect()
+					var rect = .getBoundingClientRect()
+					var height = getInnerHeight(inpt)
+					.style.fontSize = height + "px"
+					.placeholder = "Enter your message..."
+					.style.fontSize = height + "px"
+					.style.left = rect.left + "px"
+					.style.top = rect.top + "px"
+					.style.width = rect.width + "px"
+					.style.height = rect.height + "px"
+				}
 				
-				var btnRect = btn.getBoundingClientRect()
-				btn.placeholder = "Send"
-				btn.style.fontSize = height + "px"
-				btn.style.left = rect.left + "px"
-				btn.style.top = rect.top + "px"
-				btn.style.width = rect.width + "px"
-				btn.style.height = rect.height + "px"
+				width (btn) {
+					var btnRect = .getBoundingClientRect()
+					.placeholder = "Send"
+					.style.fontSize = height + "px"
+					.style.left = rect.left + "px"
+					.style.top = rect.top + "px"
+					.style.width = rect.width + "px"
+					.style.height = rect.height + "px"
+				}
 			} else {
 				var rect = inpt.getBoundingClientRect()
 				var height = getInnerHeight(inpt)
