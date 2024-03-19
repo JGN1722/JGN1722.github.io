@@ -61,12 +61,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</section>
 	</body>
 	<script>
-		window.onload = function() {
+		window.onload = resizePage();
+		window.onresize = resizePage();
+		
+		function resizePage() {
 			var inpt = document.getElementById("msger-input")
 			var btn = document.getElementById("msger-send-btn")
 			var height = getInnerHeight(inpt)
 			
-			if (getInnerHeight(inpt) > 50) {
+			if (height > 50) {
 				inpt.placeholder = ""
 				btn.innerHTML = ""
 				
@@ -93,69 +96,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					style.height = rect.height + "px"
 				}
 			} else {
-				var rect = inpt.getBoundingClientRect()
-				var height = getInnerHeight(inpt)
 				inpt.placeholder = "Enter your message..."
 				btn.innerHTML = "Send"
 			}
-		};
-		
-		window.onresize = function() {
-			var inpt = document.getElementById("msger-input")
-			var btn = document.getElementById("msger-send-btn")
-			if (getInnerHeight(inpt) > 50) {
-				inpt.placeholder = ""
-				btn.innerHTML = ""
-				
-				with (inpt) {
-					style.fontSize = ""
-					var inptRect = getBoundingClientRect()
-					var rect = getBoundingClientRect()
-					var height = getInnerHeight(inpt)
-					style.fontSize = height + "px"
-					placeholder = "Enter your message..."
-					style.left = rect.left + "px"
-					style.top = rect.top + "px"
-					style.width = rect.width + "px"
-					style.height = rect.height + "px"
-				}
-				
-				with (btn) {
-					style.fontSize = ""
-					var btnRect = getBoundingClientRect()
-					placeholder = "Send"
-					style.fontSize = height + "px"
-					style.left = rect.left + "px"
-					style.top = rect.top + "px"
-					style.width = rect.width + "px"
-					style.height = rect.height + "px"
-				}
-			} else {
-				var rect = inpt.getBoundingClientRect()
-				var height = getInnerHeight(inpt)
-				inpt.placeholder = "Enter your message..."
-				btn.innerHTML = "Send"
-			}
-		};
+		}
 		
 		function getInnerHeight(elm) {
 			var computed = getComputedStyle(elm)
 			var padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom)
 			return elm.clientHeight - padding
-		}
-		
-		function inputFocus() {
-			/*var inpt = document.getElementById("msger-input")
-			var rect = inpt.getBoundingClientRect()
-			var height = getInnerHeight(inpt)
-			inpt.style.fontSize = height + "px"
-			inpt.style.left = rect.left + "px"
-			inpt.style.top = rect.top + "px"
-			inpt.style.width = rect.width + "px"
-			inpt.style.height = rect.height + "px"*/ b
-		}
-		function inputBlur() {
-			/*document.getElementById("msger-input").style.fontSize = ""*/
 		}
 	</script>
 </html>
