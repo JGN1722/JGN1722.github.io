@@ -69,6 +69,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				btn.innerHTML = ""
 				
 				var inptRect = inpt.getBoundingClientRect()
+				var rect = inpt.getBoundingClientRect()
+				var height = getInnerHeight(inpt)
 				inpt.placeholder = "Enter your message..."
 				inpt.style.fontSize = height + "px"
 				inpt.style.left = rect.left + "px"
@@ -84,6 +86,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				btn.style.width = rect.width + "px"
 				btn.style.height = rect.height + "px"
 			} else {
+				var rect = inpt.getBoundingClientRect()
+				var height = getInnerHeight(inpt)
 				inpt.placeholder = "Enter your message..."
 				btn.innerHTML = "Send"
 			}
@@ -98,6 +102,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				
 				var inptRect = inpt.getBoundingClientRect()
 				inpt.placeholder = "Enter your message..."
+				var rect = inpt.getBoundingClientRect()
+				var height = getInnerHeight(inpt)
 				inpt.style.fontSize = height + "px"
 				inpt.style.left = rect.left + "px"
 				inpt.style.top = rect.top + "px"
@@ -112,6 +118,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				btn.style.width = rect.width + "px"
 				btn.style.height = rect.height + "px"
 			} else {
+				var rect = inpt.getBoundingClientRect()
+				var height = getInnerHeight(inpt)
 				inpt.placeholder = "Enter your message..."
 				btn.innerHTML = "Send"
 			}
@@ -124,17 +132,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		}
 		
 		function inputFocus() {
-			var inpt = document.getElementById("msger-input")
+			/*var inpt = document.getElementById("msger-input")
 			var rect = inpt.getBoundingClientRect()
 			var height = getInnerHeight(inpt)
 			inpt.style.fontSize = height + "px"
 			inpt.style.left = rect.left + "px"
 			inpt.style.top = rect.top + "px"
 			inpt.style.width = rect.width + "px"
-			inpt.style.height = rect.height + "px"
+			inpt.style.height = rect.height + "px"*/
 		}
 		function inputBlur() {
-			document.getElementById("msger-input").style.fontSize = ""
+			/*document.getElementById("msger-input").style.fontSize = ""*/
 		}
 	</script>
 </html>
