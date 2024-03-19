@@ -70,12 +70,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			var height = getInnerHeight(inpt)
 			
 			if (height > 50) {
-				inpt.placeholder = ""
-				btn.innerHTML = ""
-				
 				with (inpt) {
+					placeholder = ""
 					style.fontSize = ""
-					var inptRect = getBoundingClientRect()
 					var rect = getBoundingClientRect()
 					style.fontSize = height + "px"
 					placeholder = "..."
@@ -86,9 +83,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				}
 				
 				with (btn) {
+					innerHTML = ""
 					style.fontSize = ""
-					var btnRect = getBoundingClientRect()
-					placeholder = "Send"
+					var rect = getBoundingClientRect()
+					innerHTML = "Send"
 					style.fontSize = height + "px"
 					style.left = rect.left + "px"
 					style.top = rect.top + "px"
