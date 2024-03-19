@@ -61,8 +61,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</section>
 	</body>
 	<script>
-		window.onload = resizePage();
-		window.onresize = resizePage();
+		window.onload = resizePage;
+		window.onresize = resizePage;
 		
 		function resizePage() {
 			var inpt = document.getElementById("msger-input")
@@ -74,8 +74,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					placeholder = ""
 					style.fontSize = ""
 					var rect = getBoundingClientRect()
-					style.fontSize = height + "px"
 					placeholder = "..."
+					style.fontSize = height + "px"
 					style.left = rect.left + "px"
 					style.top = rect.top + "px"
 					style.width = rect.width + "px"
@@ -85,7 +85,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				with (btn) {
 					innerHTML = ""
 					style.fontSize = ""
-					var rect = getBoundingClientRect()
+					rect = getBoundingClientRect()
 					innerHTML = "Send"
 					style.fontSize = height + "px"
 					style.left = rect.left + "px"
