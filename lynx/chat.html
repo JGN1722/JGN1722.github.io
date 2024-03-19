@@ -95,6 +95,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			if (getInnerHeight(inpt) > 50) {
 				inpt.placeholder = ""
 				btn.innerHTML = ""
+				
+				var inptRect = inpt.getBoundingClientRect()
+				inpt.placeholder = "Enter your message..."
+				inpt.style.fontSize = height + "px"
+				inpt.style.left = rect.left + "px"
+				inpt.style.top = rect.top + "px"
+				inpt.style.width = rect.width + "px"
+				inpt.style.height = rect.height + "px"
+				
+				var btnRect = btn.getBoundingClientRect()
+				btn.placeholder = "Send"
+				btn.style.fontSize = height + "px"
+				btn.style.left = rect.left + "px"
+				btn.style.top = rect.top + "px"
+				btn.style.width = rect.width + "px"
+				btn.style.height = rect.height + "px"
 			} else {
 				inpt.placeholder = "Enter your message..."
 				btn.innerHTML = "Send"
