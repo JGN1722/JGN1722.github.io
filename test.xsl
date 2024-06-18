@@ -16,10 +16,10 @@
  Is Schema Aware ?: <xsl:value-of select="system-property('xsl:is-schema-aware')" /><br />
  </xsl:if>
  <xsl:if test="system-property('xsl:supports-serialization')">
- Supports Serialization: <xsl:value-of select="system-property('xsl:supportsserialization')" /><br />
+ Supports Serialization: <xsl:value-of select="system-property('xsl:supports-serialization')" /><br />
  </xsl:if>
  <xsl:if test="system-property('xsl:supports-backwards-compatibility')">
- Supports Backwards Compatibility: <xsl:value-of select="system-property('xsl:supportsbackwards-compatibility')" /><br />
+ Supports Backwards Compatibility: <xsl:value-of select="system-property('xsl:supports-backwards-compatibility')" /><br />
  </xsl:if>
  <br />Navigator Object (JavaScript stuff): 
  <pre><font size="2"><script>for (i in navigator) { document.write('<br />navigator.' + i + 
