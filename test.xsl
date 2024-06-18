@@ -32,4 +32,3 @@ document.createTextNode(output); document.getElementById("output").appendChild(t
  </html>
 </xsl:template>
 </xsl:stylesheet>
-Figure 2: 
