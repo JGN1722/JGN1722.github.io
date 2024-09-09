@@ -1,5 +1,5 @@
 # Welcome to My Coding World
-Hello! I’m [Your Name], a passionate programmer who loves solving complex problems and turning creative ideas into functional software. Whether it’s building compilers, crafting custom web servers, or even recreating games like Minecraft, I thrive on pushing the boundaries of what I can build.
+Hello! I’m JGN, a passionate programmer who loves solving complex problems and turning creative ideas into functional software. Whether it’s building compilers, crafting custom web servers, or even recreating games like Minecraft, I thrive on pushing the boundaries of what I can build.
 
 I believe in learning by doing, and every project you’ll find here is a testament to my desire to explore, experiment, and improve.
 
@@ -15,9 +15,9 @@ I didn’t just use a pre-built server—I wrote my own! It’s efficient, handl
 [Explore my web server project →](webserver.md)
 
 ## Minecraft Clone
-Inspired by the blocky universe of Minecraft, I decided to build my own 3D voxel-based game. With custom terrain generation, rendering optimization, and interactive gameplay elements, my Minecraft clone captures the essence of what makes the original game so captivating—all powered by code I wrote.
+Inspired by the blocky universe of Minecraft, I decided to build my own 3D voxel-based game. With custom terrain generation and rendering optimization, my Minecraft clone captures the essence of what makes the original game so captivating—all powered by code I wrote.
 
-[Dive into my Minecraft clone →]()
+[Dive into my Minecraft clone →](pythoncraft.md)
 
 ## Calculator Games
 Yes, even calculators can be gaming platforms! Over the years, I’ve programmed several games for graphing calculators, squeezing every ounce of processing power to create fun and engaging experiences. This was my introduction to coding for resource-constrained environments and optimizing performance.
