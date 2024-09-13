@@ -11,7 +11,7 @@ Main
 	Dim WindowID
 	Dim PanelID
 	
-	WindowID = OpenWindow(100,100,600,300,&quot;Template program&quot;,@WindowCallback)
+	WindowID = OpenWindow(100,100,600,300,"Template program",@WindowCallback)
 	
 	Repeat Until HandleWindowEvents() = 0
 EndMain
