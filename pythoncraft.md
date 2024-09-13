@@ -18,3 +18,4 @@ Scattered throughout the terrain, you’ll find clusters of procedurally generat
 <p class="has-line-data" data-line-start="15" data-line-end="16">Though gameplay mechanics are not yet implemented, this project serves as the perfect foundation for building a fully functional voxel-based game. Future updates will focus on player interactions, resource gathering, crafting, and more.</p>
 </li>
 </ul>
+<p><a target="_blank" href="https://github.com/JGN1722/PythonCraft">See and download the code on github</a></p>
