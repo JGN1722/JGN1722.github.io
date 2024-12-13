@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch README with Showdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        #readme {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch and Display README</h1>
+    <button id="fetch-button">Fetch README</button>
+    <div id="readme">Click the button to load the README.</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+    <script>
+        document.getElementById('fetch-button').addEventListener('click', async () => {
+            const readmeUrl = 'https://raw.githubusercontent.com/JGN1722/CalculatorGames/main/README.md';
+            const readmeContainer = document.getElementById('readme');
+
+            try {
+                // Fetch the raw Markdown file
+                const response = await fetch(readmeUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch README file.');
+                }
+                const markdown = await response.text();
+
+                // Convert Markdown to HTML using Showdown
+                const converter = new showdown.Converter();
+                const html = converter.makeHtml(markdown);
+
+                // Display the converted HTML in the readme container
+                readmeContainer.innerHTML = html;
+            } catch (error) {
+                console.error(error);
+                readmeContainer.textContent = 'Error loading README. Please check the console for more details.';
+            }
+        });
+    </script>
+</body>
+</html>
