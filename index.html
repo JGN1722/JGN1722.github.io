@@ -47,7 +47,7 @@
 <body>
     <h1>Dynamic Markdown Viewer</h1>
     <button id="home-button">Home</button>
-    <a id="view-button" href="#" target="_blank">View on GitHub</a>
+    <a id="view-button" href="#" target="_blank">View Repository on GitHub</a>
     <div id="readme"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
@@ -106,9 +106,9 @@
 
                 // Update the current repository and show the view button
                 currentRepo = repo;
-                const githubUrl = `https://github.com/${username}/${repo}/blob/${branch}/${filename}`;
+                const githubRepoUrl = `https://github.com/${username}/${repo}`;
                 const viewButton = document.getElementById('view-button');
-                viewButton.href = githubUrl;
+                viewButton.href = githubRepoUrl; // Link to the repository's base URL
                 viewButton.style.display = 'inline-block'; // Show the view button
             } catch (error) {
                 console.error(error);
