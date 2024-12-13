@@ -30,11 +30,24 @@
         button:hover {
             background-color: #0056b3;
         }
+        #view-button {
+            display: none;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+        }
+        #view-button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
     <h1>Dynamic Markdown Viewer</h1>
     <button id="home-button">Home</button>
+    <a id="view-button" href="#" target="_blank">View on GitHub</a>
     <div id="readme"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
@@ -53,9 +66,14 @@
             <button class="fetch-button" data-path="DBasic">Fetch Example File</button>
         `;
 
+        // Track the currently displayed repository
+        let currentRepo = null;
+
         // Function to display default content
         function showDefaultContent() {
             document.getElementById('readme').innerHTML = defaultContent;
+            document.getElementById('view-button').style.display = 'none'; // Hide the view button
+            currentRepo = null; // Clear the current repository
             addFetchButtonListeners(); // Add listeners for the fetch buttons
         }
 
@@ -85,6 +103,13 @@
 
                 // Display the converted HTML in the container
                 container.innerHTML = html;
+
+                // Update the current repository and show the view button
+                currentRepo = repo;
+                const githubUrl = `https://github.com/${username}/${repo}/blob/${branch}/${filename}`;
+                const viewButton = document.getElementById('view-button');
+                viewButton.href = githubUrl;
+                viewButton.style.display = 'inline-block'; // Show the view button
             } catch (error) {
                 console.error(error);
                 container.textContent = 'Error loading file. Please check the console for more details.';
