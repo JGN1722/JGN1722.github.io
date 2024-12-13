@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch README with Showdown</title>
+    <title>Fetch Files with Showdown</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,26 +32,37 @@
     </style>
 </head>
 <body>
-    <h1>Fetch and Display README</h1>
-    <button id="fetch-button">Fetch README</button>
-    <div id="readme">Click the button to load the README.</div>
+    <h1>Fetch and Display Markdown Files</h1>
+    <button class="fetch-button" 
+            data-username="JGN1722" 
+            data-repo="CalculatorGames" 
+            data-branch="main" 
+            data-path="README.md">
+        Fetch README
+    </button>
+    <button class="fetch-button" 
+            data-username="JGN1722" 
+            data-repo="DBasic" 
+            data-branch="main" 
+            data-path="README.md">
+        Fetch Example File
+    </button>
+
+    <div id="readme">Click a button to load a file.</div>
 
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
     <script>
-        document.getElementById('fetch-button').addEventListener('click', async () => { fetch_readme("CalculatorGames") });
-        function fetch_readme(repo) {
-            const username = 'JGN1722';
-            const branch = 'main';
-            const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/README.md`;
+        // Function to fetch and display a Markdown file
+        async function fetchAndDisplayMarkdown(username, repo, branch, filePath, containerId) {
+            const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${filePath}`;
             const baseRawUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/`;
-
-            const readmeContainer = document.getElementById('readme');
+            const container = document.getElementById(containerId);
 
             try {
                 // Fetch the raw Markdown file
                 const response = await fetch(readmeUrl);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch README file.');
+                    throw new Error('Failed to fetch file.');
                 }
                 let markdown = await response.text();
 
@@ -65,13 +76,27 @@
                 const converter = new showdown.Converter();
                 const html = converter.makeHtml(markdown);
 
-                // Display the converted HTML in the readme container
-                readmeContainer.innerHTML = html;
+                // Display the converted HTML in the container
+                container.innerHTML = html;
             } catch (error) {
                 console.error(error);
-                readmeContainer.textContent = 'Error loading README. Please check the console for more details.';
+                container.textContent = 'Error loading file. Please check the console for more details.';
             }
         }
+
+        // Add event listeners to all buttons with the class 'fetch-button'
+        document.querySelectorAll('.fetch-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const username = button.getAttribute('data-username');
+                const repo = button.getAttribute('data-repo');
+                const branch = button.getAttribute('data-branch');
+                const filePath = button.getAttribute('data-path');
+                const containerId = 'readme';
+
+                // Call the function with parameters from the button's data attributes
+                fetchAndDisplayMarkdown(username, repo, branch, filePath, containerId);
+            });
+        });
     </script>
 </body>
 </html>
