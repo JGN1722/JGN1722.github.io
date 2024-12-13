@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Files with Showdown</title>
+    <title>Dynamic Markdown Viewer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,7 @@
             color: white;
             border: none;
             border-radius: 5px;
+            margin-bottom: 10px;
         }
         button:hover {
             background-color: #0056b3;
@@ -32,31 +33,37 @@
     </style>
 </head>
 <body>
-    <h1>Fetch and Display Markdown Files</h1>
-    <button class="fetch-button" 
-            data-username="JGN1722" 
-            data-repo="CalculatorGames" 
-            data-branch="main" 
-            data-path="README.md">
-        Fetch README
-    </button>
-    <button class="fetch-button" 
-            data-username="JGN1722" 
-            data-repo="DBasic" 
-            data-branch="main" 
-            data-path="README.md">
-        Fetch Example File
-    </button>
-
-    <div id="readme">Click a button to load a file.</div>
+    <h1>Dynamic Markdown Viewer</h1>
+    <button id="home-button">Home</button>
+    <div id="readme"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
     <script>
+        // Constants
+        const username = 'myuser';
+        const filename = 'README.md';
+        const branch = 'main';
+
+        // Default content as a string
+        const defaultContent = `
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <h3>Section 1</h3>
+            <button class="fetch-button" data-path="CalculatorGames">Fetch README</button>
+            <h3>Section 2</h3>
+            <button class="fetch-button" data-path="DBasic">Fetch Example File</button>
+        `;
+
+        // Function to display default content
+        function showDefaultContent() {
+            document.getElementById('readme').innerHTML = defaultContent;
+            addFetchButtonListeners(); // Add listeners for the fetch buttons
+        }
+
         // Function to fetch and display a Markdown file
-        async function fetchAndDisplayMarkdown(username, repo, branch, filePath, containerId) {
-            const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${filePath}`;
+        async function fetchAndDisplayMarkdown(repo) {
+            const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${filename}`;
             const baseRawUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/`;
-            const container = document.getElementById(containerId);
+            const container = document.getElementById('readme');
 
             try {
                 // Fetch the raw Markdown file
@@ -84,19 +91,19 @@
             }
         }
 
-        // Add event listeners to all buttons with the class 'fetch-button'
-        document.querySelectorAll('.fetch-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const username = button.getAttribute('data-username');
-                const repo = button.getAttribute('data-repo');
-                const branch = button.getAttribute('data-branch');
+        // Function to add event listeners to fetch buttons
+        function addFetchButtonListeners() {
+            document.querySelectorAll('.fetch-button').forEach(button => {
                 const filePath = button.getAttribute('data-path');
-                const containerId = 'readme';
-
-                // Call the function with parameters from the button's data attributes
-                fetchAndDisplayMarkdown(username, repo, branch, filePath, containerId);
+                button.addEventListener('click', () => fetchAndDisplayMarkdown(filePath));
             });
-        });
+        }
+
+        // Add listener for the Home button
+        document.getElementById('home-button').addEventListener('click', showDefaultContent);
+
+        // Show the default content on page load
+        showDefaultContent();
     </script>
 </body>
 </html>
