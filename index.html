@@ -16,6 +16,20 @@
             padding: 15px;
             border-radius: 5px;
             background-color: #f9f9f9;
+            overflow-wrap: break-word; /* Prevent text overflow */
+        }
+        #readme img {
+            max-width: calc(100% - 20px); /* Ensure images fit the container */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+            margin: 10px auto; /* Center the image */
+        }
+        #readme pre {
+            white-space: pre-wrap; /* Allow line breaking in code blocks */
+            overflow-x: auto; /* Add horizontal scroll if necessary */
+            background-color: #f3f3f3; /* Light gray background for code */
+            padding: 10px;
+            border-radius: 5px;
         }
         button {
             padding: 10px 15px;
@@ -46,7 +60,7 @@
     </style>
 </head>
 <body>
-    <h1>My projects</h1>
+    <h1>Dynamic Markdown Viewer</h1>
     <button id="home-button" disabled>Home</button>
     <a id="view-button" href="#" target="_blank">View Repository on GitHub</a>
     <div id="readme"></div>
