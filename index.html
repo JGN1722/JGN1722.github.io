@@ -99,6 +99,7 @@
             document.getElementById('home-button').disabled = true; // Disable Home button
             currentRepo = null; // Clear the current repository
             addFetchButtonListeners(); // Add listeners for the fetch buttons
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Function to fetch and display a Markdown file
@@ -127,6 +128,8 @@
 
                 // Display the converted HTML in the container
                 container.innerHTML = html;
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 // Update the current repository and show the view button
                 currentRepo = repo;
