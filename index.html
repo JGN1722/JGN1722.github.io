@@ -75,6 +75,8 @@
         const username = 'JGN1722';
         const filename = 'README.md';
         const branch = 'main';
+        
+        const cache = {};
 
         // Default content as a string
         const defaultContent = `
@@ -113,24 +115,35 @@
             const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${filename}`;
             const baseRawUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/`;
             const container = document.getElementById('readme');
+            
+            let html = ''
 
             try {
-                // Fetch the raw Markdown file
-                const response = await fetch(readmeUrl);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch file.');
+                
+                if (cache[repo]) {
+                    // Just use the cached file
+                    html = cache[repo];
+                } else {
+                    // Fetch the raw Markdown file
+                    const response = await fetch(readmeUrl);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch file.');
+                    }
+                    let markdown = await response.text();
+    
+                    // Replace relative image paths with full GitHub raw URLs
+                    markdown = markdown.replace(/!\[(.*?)\]\((?!http)(.*?)\)/g, (match, altText, relativePath) => {
+                        const fullPath = baseRawUrl + relativePath;
+                        return `![${altText}](${fullPath})`;
+                    });
+    
+                    // Convert Markdown to HTML using Showdown
+                    const converter = new showdown.Converter();
+                    html = converter.makeHtml(markdown);
+                    
+                    // Cache the file so we don't have to do the processing again
+                    cache[repo] = html;
                 }
-                let markdown = await response.text();
-
-                // Replace relative image paths with full GitHub raw URLs
-                markdown = markdown.replace(/!\[(.*?)\]\((?!http)(.*?)\)/g, (match, altText, relativePath) => {
-                    const fullPath = baseRawUrl + relativePath;
-                    return `![${altText}](${fullPath})`;
-                });
-
-                // Convert Markdown to HTML using Showdown
-                const converter = new showdown.Converter();
-                const html = converter.makeHtml(markdown);
 
                 // Display the converted HTML in the container
                 container.innerHTML = html;
