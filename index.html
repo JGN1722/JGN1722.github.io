@@ -31,31 +31,35 @@
             padding: 10px;
             border-radius: 5px;
         }
-        button {
+        button, #view-button {
             padding: 10px 15px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #007BFF;
-            color: white;
             border: none;
             border-radius: 5px;
             margin-bottom: 10px;
+            display: inline-block; /* Ensures consistent inline rendering */
+            text-align: center; /* Center text horizontally */
+            line-height: 1; /* Ensures consistent vertical alignment */
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+        }
+        #view-button {
+            text-decoration: none;
+            background-color: #28a745;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #view-button:hover {
+            background-color: #218838;
         }
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
-        }
-        #view-button {
-            display: none;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            background-color: #28a745;
-            color: white;
-            border-radius: 5px;
-        }
-        #view-button:hover {
-            background-color: #218838;
         }
     </style>
 </head>
@@ -99,7 +103,9 @@
             document.getElementById('home-button').disabled = true; // Disable Home button
             currentRepo = null; // Clear the current repository
             addFetchButtonListeners(); // Add listeners for the fetch buttons
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.pushState({ repo: null }, 'Home', '#home');
         }
 
         // Function to fetch and display a Markdown file
@@ -140,6 +146,9 @@
 
                 // Enable the Home button
                 document.getElementById('home-button').disabled = false;
+                
+                // Push the new state to the history stack
+                history.pushState({ repo: repo }, `README - ${repo}`, `#${repo}`);
             } catch (error) {
                 console.error(error);
                 container.textContent = 'Error loading file. Please check the console for more details.';
@@ -153,7 +162,20 @@
                 button.addEventListener('click', () => fetchAndDisplayMarkdown(filePath));
             });
         }
-
+        
+        // Handle back/forward navigation
+        window.onpopstate = function (event) {
+            const state = event.state;
+        
+            if (state && state.repo) {
+                // Load the previously viewed README
+                fetchAndDisplayMarkdown(state.repo);
+            } else {
+                // Show the Home page
+                showDefaultContent();
+            }
+        };
+        
         // Add listener for the Home button
         document.getElementById('home-button').addEventListener('click', showDefaultContent);
 
