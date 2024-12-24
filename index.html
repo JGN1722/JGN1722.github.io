@@ -151,6 +151,17 @@
                 // Display the converted HTML in the container
                 container.innerHTML = html;
 
+                // Fix relative links
+                const links = container.querySelectorAll('a');
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                        // Prepend the base repository URL to relative links
+                        link.href = repoBaseUrl + href;
+                        link.target = '_blank'; // Open links in a new tab
+                    }
+                });
+
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 // Update the current repository and show the view button
