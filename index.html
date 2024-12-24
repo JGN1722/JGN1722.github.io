@@ -157,7 +157,7 @@
                     const href = link.getAttribute('href');
                     if (href && !href.startsWith('http') && !href.startsWith('#')) {
                         // Prepend the base repository URL to relative links
-                        link.href = `https://github.com/${username}/${repo}` + href;
+                        link.href = `https://github.com/${username}/${repo}/tree/main` + href;
                         link.target = '_blank'; // Open links in a new tab
                     }
                 });
