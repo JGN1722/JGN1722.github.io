@@ -1,152 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <style>
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        .box-container {
-            margin-top: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .projects-wrapper {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 10px;
-            scroll-behavior: smooth;
-        }
-        .project {
-            flex: 0 0 auto;
-            width: 300px;
-            min-width: 200px;
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column; /* Align child elements in a column */
-            justify-content: space-between; /* Distribute space between elements */
-            min-height: 200px; /* Set a minimum height for uniformity */
-        }
-        .project h3 {
-            margin-bottom: 10px; /* Add spacing between heading and description */
-        }
-        .project p {
-            flex-grow: 1; /* Allow the description to grow and take up remaining space */
-        }
-        .project button {
-            margin-top: auto; /* Push the button to the bottom */
-            align-self: flex-start; /* Align the button to the left */
-        }
-        .project h3 {
-            margin: 0 0 10px;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-        }
-        .arrow, button {
-            cursor: pointer;
-            padding: 10px;
-            border: none;
-            background: #007bff;
-            color: white;
-            border-radius: 50%;
-            font-size: 20px;
-        }
-        button {
-            border-radius: 8px;
-            padding: 10px 15px;
-            font-size: 16px;
-        }
-        .client-name {
-            font-style: italic;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio</title>
+	<style>
+		body {
+			font-family: 'Roboto', Arial, sans-serif;
+			background-color: #f4f7f6;
+			color: #333;
+			margin: 0;
+			padding: 0;
+			line-height: 1.6;
+		}
+		.header {
+			background-color: #007bff;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.container {
+			max-width: 1200px;
+			margin: auto;
+			padding: 20px;
+		}
+		.box-container {
+			margin-top: 20px;
+			padding: 15px;
+			background: white;
+			border-radius: 12px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+		.projects-wrapper {
+			display: flex;
+			overflow-x: auto;
+			gap: 20px;
+			padding: 10px;
+			scroll-behavior: smooth;
+		}
+		.project {
+			flex: 0 0 auto;
+			width: 300px;
+			min-width: 200px;
+			background: white;
+			padding: 15px;
+			border-radius: 12px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			display: flex;
+			flex-direction: column; /* Align child elements in a column */
+			justify-content: space-between; /* Distribute space between elements */
+			min-height: 200px; /* Set a minimum height for uniformity */
+		}
+		.project h3 {
+			margin-bottom: 10px; /* Add spacing between heading and description */
+		}
+		.project p {
+			flex-grow: 1; /* Allow the description to grow and take up remaining space */
+		}
+		.project button {
+			margin-top: auto; /* Push the button to the bottom */
+			align-self: flex-start; /* Align the button to the left */
+		}
+		.project h3 {
+			margin: 0 0 10px;
+		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+			margin: 10px 0;
+		}
+		.arrow, button {
+			cursor: pointer;
+			padding: 10px;
+			border: none;
+			background: #007bff;
+			color: white;
+			border-radius: 50%;
+			font-size: 20px;
+		}
+		button {
+			border-radius: 8px;
+			padding: 10px 15px;
+			font-size: 16px;
+		}
+		.client-name {
+			font-style: italic;
+		}
+	</style>
 </head>
 <body>
-    <div class="header">My Portfolio</div>
-    <div class="container">
-        <div class='box-container'>
-            <h3>Who am I ?</h3>
-            <p id='presentation'>
-                Hi ! I'm JGN, a french developer. I'm currently preparing the engineering exams at prepa Paul Valéry, in Paris. Below is a collection of my best projects, going from 3D experiments on my calculator (that I used as the subject of my high school final exam) to a full blown operating system, still a work in progress at the present time.
-            </p>
-        </div>
-        <div class="buttons">
-            <button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
-            <button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
-        </div>
-        <div class="projects-wrapper" id="projects">
-            <div class="project">
-                <h3>Calculator Games</h3>
-                <p>These projects are a bunch of games and programs for the <a href="http://numworks.com">Numworks</a> graphical calculator. The majority are pretty basic but others are more advanced.</p>
-                <button onclick="displayReadme('project1')">Display GitHub README</button>
-            </div>
-            <div class="project">
-                <h3>DBasic</h3>
-                <p>DBasic is a bit of a  BASIC-like programming language, as the name cleverly suggests. I built it to look somewhat like <a href="https://en.m.wikipedia.org/wiki/VBScript">VBScript</a>, the first language I learned. It was a sentimental project, as its purpose was learning enough about compilers to be able to rebuild VBScript when Microsoft decides to <a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301">kill it</a>. It was also very educational and I learned a whole lot about programming.</p>
-                <button onclick="displayReadme('project2')">Display GitHub README</button>
-            </div>
-            <div class="project">
-                <h3>PythonCraft</h3>
-                <p>This project is a simplistic <a href="https://en.m.wikipedia.org/wiki/Minecraft">Minecraft</a> clone. It does not feature any gameplay mechanic, though hopefully one day it will. The main goal of it was learning about opengl and random world generation, which are both very interesting topics.</p>
-                <button onclick="displayReadme('project2')">Display GitHub README</button>
-            </div>
-            <div class="project">
-                <h3>RoverOS</h3>
-                <p>I've been wanting to build my own os pretty much from the moment I started learning programming. It's still a work in progress, as it's a very ambitious project: I want to have written every byte of the code, and I am thus creating a compiler just for it, and that's why this project is so time consuming. It may take a few more months or even years, as I'm building it completely from scratch, but the goal is to make it a completely functional operating system one can use in their everyday life.</p>
-                <button onclick="displayReadme('project2')">Display GitHub README</button>
-            </div>
-            <div class="project">
-                <h3>CrazyTennis</h3>
-                <p>This is my first successful attempt at a 3D game. In it, you can play a tennis match in 6 points against a bot, whose movement speed varies according to the score difference. I present it here not for the game design, but for the technical feat it represents</p>
-                <button onclick="displayReadme('project2')">Display GitHub README</button>
-            </div>
-            <!-- Add more projects as needed -->
-        </div>
-        <div class="box-container" id="readme">
-            <h2>README Content</h2>
-            <p>Click a project to display its README.</p>
-        </div>
-        <div class="box-container">
-            <h2>Client Reviews</h2>
-            <p>"This guy is nice" - <span class="client-name">Client 1</span></p>
-        </div>
-    </div>
-    <script>
-        function scrollProjects(direction) {
-            document.getElementById('projects').scrollBy({ left: direction * 300, behavior: 'smooth' });
-        }
-        function displayReadme(project) {
-            document.getElementById('readme').innerHTML = `<h2>${project} README</h2><p>Fetched content goes here.</p>`;
-        }
-    </script>
+	<div class="header">My Portfolio</div>
+	<div class="container">
+		<div class='box-container'>
+			<h3>Who am I ?</h3>
+			<p id='presentation'>
+				Hi ! I'm JGN, a french developer. I'm currently preparing the engineering exams at prepa Paul Valéry, in Paris. Below is a collection of my best projects, going from 3D experiments on my calculator (that I used as the subject of my high school final exam) to a full blown operating system, still a work in progress at the present time.
+			</p>
+		</div>
+		<div class="buttons">
+			<button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
+			<button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
+		</div>
+		<div class="projects-wrapper" id="projects">
+			<div class="project">
+				<h3>Calculator Games</h3>
+				<p>These projects are a bunch of games and programs for the <a href="http://numworks.com">Numworks</a> graphical calculator. The majority are pretty basic but others are more advanced.</p>
+				<button data-path='CalculatorGames'>Display GitHub README</button>
+			</div>
+			<div class="project">
+				<h3>DBasic</h3>
+				<p>DBasic is a bit of a  BASIC-like programming language, as the name cleverly suggests. I built it to look somewhat like <a href="https://en.m.wikipedia.org/wiki/VBScript">VBScript</a>, the first language I learned. It was a sentimental project, as its purpose was learning enough about compilers to be able to rebuild VBScript when Microsoft decides to <a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301">kill it</a>. It was also very educational and I learned a whole lot about programming.</p>
+				<button data-path='DBasic'>Display GitHub README</button>
+			</div>
+			<div class="project">
+				<h3>PythonCraft</h3>
+				<p>This project is a simplistic <a href="https://en.m.wikipedia.org/wiki/Minecraft">Minecraft</a> clone. It does not feature any gameplay mechanic, though hopefully one day it will. The main goal of it was learning about opengl and random world generation, which are both very interesting topics.</p>
+				<button data-path='PythonCraft'>Display GitHub README</button>
+			</div>
+			<div class="project">
+				<h3>RoverOS</h3>
+				<p>I've been wanting to build my own os pretty much from the moment I started learning programming. It's still a work in progress, as it's a very ambitious project: I want to have written every byte of the code, and I am thus creating a compiler just for it, and that's why this project is so time consuming. It may take a few more months or even years, as I'm building it completely from scratch, but the goal is to make it a completely functional operating system one can use in their everyday life.</p>
+				<button data-path='RoverOs'>Display GitHub README</button>
+			</div>
+			<div class="project">
+				<h3>CrazyTennis</h3>
+				<p>This is my first successful attempt at a 3D game. In it, you can play a tennis match in 6 points against a bot, whose movement speed varies according to the score difference. I present it here not for the game design, but for the technical feat it represents</p>
+				<button data-path='CrazyTennis'>Display GitHub README</button>
+			</div>
+		</div>
+		<div class="box-container" id="readme"></div>
+		<div class="box-container">
+			<h2>Client Reviews</h2>
+			<p>"This guy is nice" - <span class="client-name">Client 1</span></p>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+	<script>
+		// Constants
+		const username = 'JGN1722';
+		const filename = 'README.md';
+		const branch = 'main';
+		
+		const cache = {};
+		
+		// Default content as string
+		const defaultContent = `
+			<h2>Project description</h2>
+			<p>Click a project to display its full description</p>
+		`;
+		
+		// The currently displayed repository
+		let currentRepo = null;
+		
+		function showDefaultContent() {
+			document.getElementById('readme').innerHTML = defaultContent;
+			currentRepo = null;
+			
+			history.pushState({ repo: null }, 'Home', '#home');
+		}
+		
+		async function displayReadme(repo) {
+			const readmeUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${filename}`;
+			const baseRawUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/`;
+			const container = document.getElementById('readme');
+			
+			let html = ''
+
+			try {
+				
+				if (cache[repo]) {
+					// Just use the cached file
+					html = cache[repo];
+				} else {
+					// Fetch the raw Markdown file
+					const response = await fetch(readmeUrl);
+					if (!response.ok) {
+						throw new Error('Failed to fetch file.');
+					}
+					let markdown = await response.text();
+	
+					// Replace relative image paths with full GitHub raw URLs
+					markdown = markdown.replace(/!\[(.*?)\]\((?!http)(.*?)\)/g, (match, altText, relativePath) => {
+						const fullPath = baseRawUrl + relativePath;
+						return `![${altText}](${fullPath})`;
+					});
+	
+					// Convert Markdown to HTML using Showdown
+					const converter = new showdown.Converter();
+					html = converter.makeHtml(markdown);
+					
+					// Cache the file so we don't have to do the processing again
+					cache[repo] = html;
+				}
+
+				// Display the converted HTML in the container
+				container.innerHTML = html;
+
+				// Fix relative links
+				const links = container.querySelectorAll('a');
+				links.forEach(link => {
+					const href = link.getAttribute('href');
+					if (href && !href.startsWith('http') && !href.startsWith('#')) {
+						// Prepend the base repository URL to relative links
+						link.href = `https://github.com/${username}/${repo}/tree/main` + href;
+						link.target = '_blank'; // Open links in a new tab
+					}
+				});
+
+				// window.scrollTo({ top: 0, behavior: 'smooth' });
+
+				// Update the current repository and show the view button
+				currentRepo = repo;
+				
+				// Push the new state to the history stack
+				history.pushState({ repo: repo }, `README - ${repo}`, `#${repo}`);
+			} catch (error) {
+				console.error(error);
+				container.textContent = 'Error loading file. Please check the console for more details.';
+			}
+		}
+		
+		// Handle back/forward navigation
+		window.onpopstate = function (event) {
+			const state = event.state;
+		
+			if (state && state.repo) {
+				// Load the previously viewed README
+				displayReadme(state.repo);
+			} else {
+				// Show the Home page
+				showDefaultContent();
+			}
+		};
+		
+		function addFetchButtonListeners() {
+			document.querySelectorAll('.project button').forEach(button => {
+				const filePath = button.getAttribute('data-path');
+				button.addEventListener('click', () => displayReadme(filePath));
+			});
+		}
+		
+		function scrollProjects(direction) {
+			document.getElementById('projects').scrollBy({ left: direction * 300, behavior: 'smooth' });
+		}
+		
+		addFetchButtonListeners();
+		showDefaultContent();
+	</script>
 </body>
 </html>
