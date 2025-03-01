@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<title>Portfolio</title>
 	<style>
 		body {
@@ -102,7 +103,6 @@
 </head>
 <body>
 	<div class="header">My Portfolio</div>
-	<pre>test</pre>
 	<div class="container">
 		<div class='box-container'>
 			<h3>Who am I ?</h3>
@@ -110,35 +110,38 @@
 				Hi ! I'm JGN, a french developer. I'm currently preparing the engineering exams at prepa Paul Valéry, in Paris. Below is a collection of my best projects, going from 3D experiments on my calculator (that I used as the subject of my high school final exam) to a full blown operating system, still a work in progress at the present time.
 			</p>
 		</div>
-		<div class="buttons">
-			<button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
-			<button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
-		</div>
-		<div class="projects-wrapper" id="projects">
-			<div class="project">
-				<h3>Calculator Games</h3>
-				<p>These projects are a bunch of games and programs for the <a href="http://numworks.com">Numworks</a> graphical calculator. The majority are pretty basic but others are more advanced.</p>
-				<button data-path='CalculatorGames'>Display GitHub README</button>
+		<div class='box-container'>
+			<h3>My projects</h3>
+			<div class="buttons">
+				<button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
+				<button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
 			</div>
-			<div class="project">
-				<h3>DBasic</h3>
-				<p>DBasic is a bit of a  BASIC-like programming language, as the name cleverly suggests. I built it to look somewhat like <a href="https://en.m.wikipedia.org/wiki/VBScript">VBScript</a>, the first language I learned. It was a sentimental project, as its purpose was learning enough about compilers to be able to rebuild VBScript when Microsoft decides to <a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301">kill it</a>. It was also very educational and I learned a whole lot about programming.</p>
-				<button data-path='DBasic'>Display GitHub README</button>
-			</div>
-			<div class="project">
-				<h3>PythonCraft</h3>
-				<p>This project is a simplistic <a href="https://en.m.wikipedia.org/wiki/Minecraft">Minecraft</a> clone. It does not feature any gameplay mechanic, though hopefully one day it will. The main goal of it was learning about opengl and random world generation, which are both very interesting topics.</p>
-				<button data-path='PythonCraft'>Display GitHub README</button>
-			</div>
-			<div class="project">
-				<h3>RoverOS</h3>
-				<p>I've been wanting to build my own os pretty much from the moment I started learning programming. It's still a work in progress, as it's a very ambitious project: I want to have written every byte of the code, and I am thus creating a compiler just for it, and that's why this project is so time consuming. It may take a few more months or even years, as I'm building it completely from scratch, but the goal is to make it a completely functional operating system one can use in their everyday life.</p>
-				<button data-path='RoverOs'>Display GitHub README</button>
-			</div>
-			<div class="project">
-				<h3>CrazyTennis</h3>
-				<p>This is my first successful attempt at a 3D game. In it, you can play a tennis match in 6 points against a bot, whose movement speed varies according to the score difference. I present it here not for the game design, but for the technical feat it represents</p>
-				<button data-path='CrazyTennis'>Display GitHub README</button>
+			<div class="projects-wrapper" id="projects">
+				<div class="project">
+					<h3>Calculator Games</h3>
+					<p>These projects are a bunch of games and programs for the <a href="http://numworks.com">Numworks</a> graphical calculator. The majority are pretty basic but others are more advanced.</p>
+					<button data-path='CalculatorGames'>Display GitHub README</button>
+				</div>
+				<div class="project">
+					<h3>DBasic</h3>
+					<p>DBasic is a bit of a  BASIC-like programming language, as the name cleverly suggests. I built it to look somewhat like <a href="https://en.m.wikipedia.org/wiki/VBScript">VBScript</a>, the first language I learned. It was a sentimental project, as its purpose was learning enough about compilers to be able to rebuild VBScript when Microsoft decides to <a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301">kill it</a>. It was also very educational and I learned a whole lot about programming.</p>
+					<button data-path='DBasic'>Display GitHub README</button>
+				</div>
+				<div class="project">
+					<h3>PythonCraft</h3>
+					<p>This project is a simplistic <a href="https://en.m.wikipedia.org/wiki/Minecraft">Minecraft</a> clone. It does not feature any gameplay mechanic, though hopefully one day it will. The main goal of it was learning about opengl and random world generation, which are both very interesting topics.</p>
+					<button data-path='PythonCraft'>Display GitHub README</button>
+				</div>
+				<div class="project">
+					<h3>RoverOS</h3>
+					<p>I've been wanting to build my own os pretty much from the moment I started learning programming. It's still a work in progress, as it's a very ambitious project: I want to have written every byte of the code, and I am thus creating a compiler just for it, and that's why this project is so time consuming. It may take a few more months or even years, as I'm building it completely from scratch, but the goal is to make it a completely functional operating system one can use in their everyday life.</p>
+					<button data-path='RoverOs'>Display GitHub README</button>
+				</div>
+				<div class="project">
+					<h3>CrazyTennis</h3>
+					<p>This is my first successful attempt at a 3D game. In it, you can play a tennis match in 6 points against a bot, whose movement speed varies according to the score difference. I present it here not for the game design, but for the technical feat it represents</p>
+					<button data-path='CrazyTennis'>Display GitHub README</button>
+				</div>
 			</div>
 		</div>
 		<div class="box-container" id="readme"></div>
