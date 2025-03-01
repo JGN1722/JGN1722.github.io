@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .projects-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px;
+            scroll-behavior: smooth;
+        }
+        .project {
+            flex: 0 0 auto;
+            width: 300px;
+            min-width: 200px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project h3 {
+            margin: 0 0 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .arrow, button {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        button {
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        .readme-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .reviews {
+            margin-top: 30px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">My Portfolio</div>
+    <div class="container">
+        <div class="buttons">
+            <button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
+            <button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
+        </div>
+        <div class="projects-wrapper" id="projects">
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Description of project 1.</p>
+                <button onclick="displayReadme('project1')">Display GitHub README</button>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Description of project 2.</p>
+                <button onclick="displayReadme('project2')">Display GitHub README</button>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+        <div class="readme-box" id="readme">
+            <h2>README Content</h2>
+            <p>Click a project to display its README.</p>
+        </div>
+        <div class="reviews">
+            <h2>Client Reviews</h2>
+            <p>Here you can add client testimonials.</p>
+        </div>
+    </div>
+    <script>
+        function scrollProjects(direction) {
+            document.getElementById('projects').scrollBy({ left: direction * 300, behavior: 'smooth' });
+        }
+        function displayReadme(project) {
+            document.getElementById('readme').innerHTML = `<h2>${project} README</h2><p>Fetched content goes here.</p>`;
+        }
+    </script>
+</body>
+</html>
