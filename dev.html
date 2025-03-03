@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	<title>Portfolio</title>
+	<title>JGN's Portfolio</title>
 	<style>
 		body {
 			font-family: 'Roboto', Arial, sans-serif;
@@ -41,11 +41,23 @@
 			padding: 10px;
 			scroll-behavior: smooth;
 		}
+		.fading-wrapper {
+			mask-image: linear-gradient(to left, transparent 0%, black var(--right-mask-size, 0), black calc(100% - var(--left-mask-size, 0)), transparent 100%);
+			--left-mask-size: 0px;
+			--right-mask-size: 0px;
+		}
+		.is-left-overflowing {
+			--left-mask-size: 48px !important;
+		}
+		.is-right-overflowing {
+			--right-mask-size: 48px !important;
+		}
 		.project {
 			flex: 0 0 auto;
 			width: 300px;
 			min-width: 200px;
-			background: white;
+			/*background: white;*/
+			background: #f9f9f9;
 			padding: 15px;
 			border-radius: 12px;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -90,7 +102,7 @@
 			margin: 10px 0; /* Center the image */
 		}
 		#readme pre {
-			white-space: pre-wrap; /* Allow line breaking in code blocks */
+			white-space: scroll; /* Don't allow line breaking in code blocks */
 			overflow-x: auto; /* Add horizontal scroll if necessary */
 			background-color: #f3f3f3; /* Light gray background for code */
 			padding: 10px;
@@ -116,7 +128,7 @@
 				<button class="arrow" onclick="scrollProjects(-1)">&#8592;</button>
 				<button class="arrow" onclick="scrollProjects(1)">&#8594;</button>
 			</div>
-			<div class="projects-wrapper" id="projects">
+			<div class="projects-wrapper fading-wrapper" id="projects">
 				<div class="project">
 					<h3>Calculator Games</h3>
 					<p>These projects are a bunch of games and programs for the <a href="http://numworks.com">Numworks</a> graphical calculator. The majority are pretty basic but others are more advanced.</p>
@@ -158,6 +170,21 @@
 		const branch = 'main';
 		
 		const cache = {};
+		
+		// Handle fading effect on boxes
+		function setFadingClasses(el) {
+			const isScrollable = el.scrollWidth > el.clientWidth;
+		
+			if (!isScrollable) {
+				el.classList.remove('is-left-overflowing', 'is-right-overflowing');
+				return;
+			}
+			
+			const isScrolledToLeft = el.scrollLeft === 0;
+			const isScrolledToRight = el.scrollLeft + el.clientWidth >= el.scrollWidth;
+			el.classList.toggle('is-left-overflowing', !isScrolledToLeft);
+			el.classList.toggle('is-right-overflowing', !isScrolledToRight);
+		}
 		
 		// Default content as string
 		const defaultContent = `
@@ -249,6 +276,15 @@
 			}
 		};
 		
+		function addFadingListeners() {
+			document.querySelectorAll('.fading-wrapper').forEach(container => {
+				container.addEventListener('scroll', (e) => {
+					const el = e.currentTarget;
+					setFadingClasses(el);
+				});
+			});
+		}
+		
 		function addFetchButtonListeners() {
 			document.querySelectorAll('.project button').forEach(button => {
 				const filePath = button.getAttribute('data-path');
@@ -260,8 +296,11 @@
 			document.getElementById('projects').scrollBy({ left: direction * 300, behavior: 'smooth' });
 		}
 		
+		addFadingListeners();
 		addFetchButtonListeners();
 		showDefaultContent();
 	</script>
 </body>
 </html>
+
+
