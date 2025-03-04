@@ -50,6 +50,9 @@
 			display: block;
 			margin: 0 auto;
 		}
+		.smaller-img {
+			max-height: 50vh !important;
+		}
 		
 		/* this is the horizontally scrollable box that contains small boxes */
 		.small-box-wrapper {
@@ -74,9 +77,7 @@
 		
 		.small-box {
 			flex: 0 0 auto;
-			width: 300px;
-			min-width: 200px;
-			/*background: white;*/
+			width: var(--width, 0);
 			background: #f9f9f9;
 			padding: 15px;
 			border-radius: 12px;
@@ -85,6 +86,8 @@
 			flex-direction: column; /* Align child elements in a column */
 			justify-content: space-between; /* Distribute space between elements */
 			min-height: 200px; /* Set a minimum height for uniformity */
+			
+			--width: min(300px, 80%);
 		}
 		.small-box p {
 			flex-grow: 1; /* Allow the description to grow and take up remaining space */
@@ -157,14 +160,17 @@
 		<div class='box-container'>
 			<h3>Who am I ?</h3>
 			<p>
-				Hi ! I'm JGN, a french developer. I'm currently preparing the engineering exams at prepa Paul Valéry, in Paris. I have been programming for more than 3 years now, and I have made many different projects, ranging from 3D experiments on my calculator (that I used as the subject of my high school final exam) to a full blown operating system, still a work in progress at the current time. I'm a DIY passionate - I love reinventing already existing software, and that allowed me to gain a lot of experience in many different domains. This habit led me to the field that became my all-time favorite, languages and <a target='_blank' href='https://en.wikipedia.org/wiki/Compiler'>compilers</a> !
+				Hi ! I'm JGN, a french developer. I'm currently preparing the engineering exams at prepa Paul Valéry, in Paris. I have been programming for more than 3 years now, and I have made many different projects, ranging from 3D experiments on my calculator (that I used as the subject of my high school final exam) to a full blown operating system, still a work in progress at the current time. I'm a DIY passionate - I love reinventing already existing software, and that allowed me to gain a lot of experience in many different domains. This habit led me to what has become my all-time favorite field, <a target='_blank' href='https://en.wikipedia.org/wiki/Compiler'>compiler programming</a> !
 			</p>
+			<image class='centered-img smaller-img' src='avatar.jpg' alt="Too bad, my avatar didn't load :(">
 		</div>
 		<div class='box-container'>
 			<h3>My skills</h3>
 			<p>
-				I mostly specialize in compilers, web backend, desktop applications and crazy projects. I'm proficient with a lot of languages, ranging from the classic python and web languages, to system-oriented languages like C and even Assembly. The complete list is: JS, SQL, Batch, Python, OCaml, GLSL, C#, C, FAsm, without forgetting the BASIC-like languages VBS, VBA and PureBasic, that will always sit in a special space in my heart.<br/>You can see below a collection of some of my projects, by no means exhaustive. You might observe I avoid complex frameworks as much as possible in my personal work, as I believe we learn the most by reinventing the wheel, but my extensive programming experience means I can adapt quickly to basically any tech stack and modern framework.<br/><br/>Most importantly, I have a very handsome cat:<image class='centered-img' src='cat.jpg' alttext='So sad you can't see the pic of my cat!'></image><center class='italic'>He secretely does all the coding for me</center>
+				I mostly specialize in compilers, web backend, desktop applications and crazy projects. I'm proficient with a lot of languages, ranging from the classic python and web languages, to system-oriented languages like C and even Assembly. The complete list is: JS, SQL, Batch, Python, OCaml, GLSL, C#, C, FAsm, without forgetting the BASIC-like languages VBS, VBA and PureBasic, that will always sit in a special space in my heart.<br/>You can see below a collection of some of my projects, by no means exhaustive. You might observe I avoid complex frameworks as much as possible in my personal work, as I believe we learn the most by reinventing the wheel, but my extensive programming experience means I can adapt quickly to basically any tech stack and modern framework.<br/><br/>Most importantly, I have a very handsome cat:
 			</p>
+			<image class='centered-img' src='cat.jpg' alt='So sad you can't see the pic of my cat!'></image>
+			<center class='italic'>He secretely does all the coding for me</center>
 		</div>
 		<div class='box-container'>
 			<h3>My projects</h3>
@@ -202,7 +208,7 @@
 		</div>
 		<div class='box-container' id='readme'></div>
 		<div class='box-container'>
-			<h3>Where to <strike>hire</strike> contact me</h3>
+			<h3>Where to <s>hire</s> contact me</h3>
 			<p>
 				<ul>
 					<li><span style='font-weight: bold;'>Discord:</span> _jgn</li>
@@ -264,6 +270,7 @@
 			const container = document.getElementById('readme');
 			
 			let html = ''
+			container.innerHTML = '<h3>Loading...</h3>'
 
 			try {
 				
@@ -353,12 +360,14 @@
 			});
 		}
 		
-		function scrollProjects(direction) {
-			document.getElementById('projects').scrollBy({ left: direction * 300, behavior: 'smooth' });
-		}
 		
-		function scrollReviews(direction) {
-			document.getElementById('reviews').scrollBy({ left: direction * 300, behavior: 'smooth' });
+		function scrollProjects(direction) {
+			let container = document.getElementById('projects');
+			let box = document.querySelector('.small-box'); // Get the first small-box
+			if (box) {
+				let scrollAmount = box.offsetWidth + parseInt(getComputedStyle(box).marginRight) + 15; // Include margin
+				container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+			}
 		}
 		
 		addFadingListeners();
