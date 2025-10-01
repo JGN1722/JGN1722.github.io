@@ -75,7 +75,7 @@ function GetCurrentDate() {
 	var today = new Date();
 	return new RealDate(
 		today.getFullYear(),
-		today.getMonth() + 1, // Idk why I need this
+		today.getMonth(),
 		today.getDate(),
 		today.getHours(),
 		today.getMinutes(),
@@ -119,4 +119,5 @@ function SubFromDate(d1, d2) {
 			d1.y -= 1;
 		}
 	}
+
 }
