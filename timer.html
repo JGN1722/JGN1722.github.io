@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>LES CONCOURS ARRIVENT</title>
+		<script src='timer.js'></script>
+		
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width'>
+		<meta content-type='text/html'>
+		
+		<style>
+			.disclaimer {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%; 
+				padding: 10px;
+				background: #f8f8f8;
+				color: #555;
+				text-align: center;
+				border-top: 1px solid #ddd;
+				font-size: 0.9em;
+				font-style: italic;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='time-before-armageddon'>Loading</div>
+		<div class="disclaimer">
+			Stressez pas trop quand même, vous allez gérer :)
+		</div>
+	</body>
+	<script>
+		function updateCountdown() {
+			c = document.getElementById('time-before-armageddon');
+			d = GetDate(2026, 4, 14, 8, 0, 0);
+			SubFromDate(d, GetCurrentDate());
+			
+			s  = "Concours dans " + d.y + " années, ";
+			s += d.m + " mois, " + d.d + " jours, ";
+			s += d.h + " heures, " + d.i + " minutes et ";
+			s += d.s + " secondes";
+			
+			c.innerHTML = s;
+		}
+		
+		updateCountdown();
+		
+		setInterval(updateCountdown, 500);
+	</script>
+</html>
