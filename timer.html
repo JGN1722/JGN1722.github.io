@@ -33,7 +33,7 @@
 	<script>
 		function updateCountdown() {
 			c = document.getElementById('time-before-armageddon');
-			d = GetDate(2026, 4, 14, 8, 0, 0);
+			d = GetDate(2026, 4, 13, 8, 0, 0);
 			SubFromDate(d, GetCurrentDate());
 			
 			s  = "Concours dans " + d.y + " années, ";
@@ -48,4 +48,5 @@
 		
 		setInterval(updateCountdown, 500);
 	</script>
+
 </html>
