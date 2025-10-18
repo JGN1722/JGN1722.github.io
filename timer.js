@@ -112,7 +112,7 @@ function SubFromDate(d1, d2) {
 	
 	d1.d -= d2.d;
 	if (d1.d < 0) {
-		d1.d += DayInMonth(d1.m, d1.y);
+		d1.d += DaysInMonth(d1.m, d1.y);
 		d1.m -= 1;
 		if (d1.m < 0) {
 			d1.m += 12;
@@ -121,3 +121,4 @@ function SubFromDate(d1, d2) {
 	}
 
 }
+
